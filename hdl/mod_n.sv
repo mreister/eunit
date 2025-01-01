@@ -1,4 +1,4 @@
-module counter
+module counter #( parameter BUS_WIDTH=32)
 (
   input logic clock,
   input logic reset,
@@ -6,4 +6,4 @@ module counter
 );
 
 
-end module;
+end module; 

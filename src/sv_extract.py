@@ -14,8 +14,12 @@ if __name__ == "__main__":
     vhdl_file_path = file_path
     port_data_json = extract_sv_ports(vhdl_file_path)
 
+    
     # i need to replace module_name with entity name for port_data_json
     json_data = json.dumps({("entity_name" if k == "module_name" else k): v for k, v in json.loads(port_data_json).items()})
+    json_data = json.dumps({("generics" if k == "parameters" else k): v for k, v in json.loads(json_data).items()})
+    print(json_data)
+    
     #print(json_data)
 
     vhdl_code = generate_vhdl_instantiation(json_data)

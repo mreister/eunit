@@ -48,7 +48,6 @@ architecture arch of  hello is
 begin
 
 
-
 constant identifier_COUNTER_SIZE : integer := 8;
 signal identifier_sig :  unsigned((identifier_COUNTER_SIZE - 1) downto 0);
 signal identifier_en_sig : std_logic;
@@ -68,7 +67,13 @@ port map (
 	counter_o => identifier_sig
 ) ;
 
-
-
-
+counter_inst : entity work.counter
+generic map (
+    BUS_WIDTH => BUS_WIDTH
+)
+port map (
+    clock => clock -- logic,
+    reset => reset -- logic,
+    logic => logic -- logic
+);
 end architecture ; -- arch
