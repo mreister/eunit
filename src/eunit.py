@@ -18,7 +18,7 @@ MR:
 	
 module {0}_stim # (
 	parameter INPUT_FILE
-)
+) (
 	input {1} stim_file_i, 
 	input clk_i, 
 	input rst_i,
@@ -41,7 +41,7 @@ MR:
 module {0}_check #(
 	parameter OUTPUT_FILE 
 )(
-	Input {1} data_i, 
+	input {1} data_i, 
 	input clk i, 
 	input rst_i,
 	// output
@@ -82,7 +82,7 @@ use ieee.numeric_std.all;
 
 entity {0}_dut is port (
 	-- inputs 
-	data i ： in {1}; 
+	data_i ： in {1}; 
 	clk_i ： in std_logic;
 	rst_i ： in std_logic;
 
