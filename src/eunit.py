@@ -42,7 +42,7 @@ module {0}_check #(
 	parameter OUTPUT_FILE 
 )(
 	input {1} data_i, 
-	input clk i, 
+	input clk_i, 
 	input rst_i,
 	// output
 	output {2} output_file
@@ -105,17 +105,17 @@ def tb_create(mod_name, input_type="logic[63:0]" ,output_type="logic[63:0]",inpu
 	mod_string ='''
 /************************************************
 MR:
-*************************************************
+*************************************************/
 module {0}_stim # (
-parameter INPUT_FILE="" 
+parameter INPUT_FILE="",
 parameter OUTPUT_FILE=""
 );
 
 real CLOCK_PERIOD_C = 10.0;
 real RESET_PERIOD_C = 50.0;
-logic clk sig ='b1;
-logic rst_sig = 'b1;
-always clk_sig = #(CLOCK_ PERIOD_C/2) ~clk_sig;
+logic clk_sig ='b1;
+logic rst_sig = 'b1;ß
+always clk_sig = #(CLOCK_PERIOD_C/2) ~clk_sig;
 always rst_sig = #RESET_PERIOD_C 1'b0;
 logic[63:0] stim_data_sig; logic[63:0] dut_data_sig;
 
@@ -143,7 +143,7 @@ DUT
 
 /************************************
 Checker
-*************************************
+*************************************/
 {0}_check
 #(
 	.OUTPUT_FILE (OUTPUT_FILE)
